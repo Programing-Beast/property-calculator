@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-orange: #F15A25;
+  --color-brand-orange-dark: #d0481b;
+
+  --font-heading: var(--font-montserrat), sans-serif;
+  --font-sans: var(--font-open-sans), sans-serif;
+}
+
+:root {
+  --brand-orange: #F15A25;
+  --brand-black: #000000;
+  --white: #FFFFFF;
+}
+
+body {
+  font-family: var(--font-open-sans), sans-serif;
+  background-color: #FFFFFF;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+/* Onboarding transitions */
+.wizard-slide {
+  transition: opacity 250ms ease-in-out, transform 250ms ease-in-out;
+}
+.wizard-slide.fade-out {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+.wizard-slide.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Micro-animations and active states */
+.card-option {
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid #E4E4E7;
+}
+.card-option:hover {
+  border-color: #27272A;
+  transform: translateY(-2px);
+}
+.card-option.selected {
+  border-color: var(--brand-orange);
+  background-color: rgba(241, 90, 37, 0.04);
+}
+.card-option.selected .check-indicator {
+  background-color: var(--brand-orange);
+  border-color: var(--brand-orange);
+}
+
+/* Button active states */
+.btn-primary {
+  background-color: var(--brand-orange);
+  color: var(--white);
+  transition: all 200ms ease;
+}
+.btn-primary:hover:not(:disabled) {
+  background-color: var(--brand-orange-dark, #d84513);
+  transform: translateY(-1px);
+}
+.btn-primary:disabled {
+  background-color: #E4E4E7;
+  color: #52525B;
+  cursor: not-allowed;
+}
+.btn-secondary {
+  border: 1px solid #E4E4E7;
+  color: #27272A;
+  transition: all 200ms ease;
+}
+.btn-secondary:hover {
+  background-color: #FAFAFA;
+}
+
+/* Currency input focus styles */
+.currency-input-wrapper input:focus {
+  outline: none;
+  border-color: var(--brand-orange);
+  box-shadow: 0 0 0 3px rgba(241, 90, 37, 0.15);
+}
+
+/* Print Specific Styles */
+@media print {
+  html, body {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    font-size: 12pt;
+    margin: 0;
+    padding: 0;
+  }
+  header,
+  footer,
+  nav,
+  button,
+  .no-print,
+  .btn,
+  .step-indicator,
+  .controls-wrapper {
+    display: none !important;
+  }
+  #results-screen {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  .print-invoice-box {
+    border: 1px solid #000000 !important;
+    padding: 20px !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+  }
+  .print-invoice-box.gift-non-heir-invoice {
+    padding: 15px !important;
+  }
+  .print-header {
+    border-bottom: 2px solid #000000 !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 20px !important;
+  }
+  .grid-print-cols {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
+  }
+  @page {
+    size: A4 portrait;
+    margin: 15mm;
+  }
+}
+
+@media (max-width: 500px) {
+  .header-title-text {
+    display: none !important;
+  }
+}
