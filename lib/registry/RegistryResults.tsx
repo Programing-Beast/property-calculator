@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import DownloadPdfButton from "@/components/DownloadPdfButton";
+import OfficeAddress from "@/components/OfficeAddress";
 import { formatRupees, type RegistryResult } from "./engine";
 import { buildRegistryShareText, shareText } from "./share";
 
@@ -19,7 +21,7 @@ function Row({
 }) {
   return (
     <div
-      className={`flex justify-between ${red ? "text-red-600 font-medium" : ""} ${italic ? "text-neutral-500 italic" : ""}`}
+      className={`invoice-line flex justify-between gap-4 ${red ? "text-red-600 font-medium" : ""} ${italic ? "text-neutral-500 italic" : ""}`}
     >
       <div className="flex flex-col">
         <span className={red ? "" : "text-neutral-600"}>{label}</span>
@@ -96,7 +98,7 @@ export default function RegistryResults({
   async function onShare() {
     const mode = await shareText(
       buildRegistryShareText(result),
-      "Registry Expenses Calculator Invoice",
+      "Property Registry · Expense Invoice",
     );
     if (mode === "copied") {
       setToast("Calculation copied to clipboard! Paste it anywhere to share.");
@@ -122,16 +124,16 @@ export default function RegistryResults({
       </div>
 
       <div
-        className={`print-invoice-box bg-white border border-neutral-200 rounded-lg shadow-sm p-6 sm:p-8 mb-8 text-left ${isGiftNonHeir ? "gift-non-heir-invoice" : ""}`}
+        className={`invoice-document print-invoice-box bg-white border border-neutral-200 rounded-lg shadow-sm p-6 sm:p-8 mb-8 text-left ${isGiftNonHeir ? "gift-non-heir-invoice" : ""}`}
       >
         {/* Print header */}
-        <div className="print-header hidden print:block mb-8 pb-6 border-b-2 border-neutral-800">
+        <div className="invoice-heading print-header mb-8 pb-6 border-b-2 border-neutral-800">
           <div className="flex items-center gap-3">
             <div>
-              <h1 className="text-xl font-bold tracking-tight text-neutral-900 uppercase">
-                CHAUDARY PROPERTY ADVISOR
+              <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900">
+                Chaudhary Law Associates
               </h1>
-              <p className="text-xs text-neutral-500 mt-0.5">Registry Expenses Calculator Invoice</p>
+              <p className="text-xs text-neutral-500 mt-0.5">Property Registry · Expense Invoice</p>
             </div>
           </div>
         </div>
@@ -154,7 +156,7 @@ export default function RegistryResults({
         </div>
 
         {/* Grand total */}
-        <div className="bg-neutral-50 rounded-lg p-6 mb-8 text-center border border-neutral-100">
+        <div className="invoice-total rounded-xl p-6 mb-8 border">
           <span className="text-neutral-500 uppercase tracking-widest text-xs font-semibold block mb-1">
             Grand Total Expenses
           </span>
@@ -250,6 +252,7 @@ export default function RegistryResults({
                       <Row label="FBR Withholding Tax (236K)" value="Exempt" italic />
                     </div>
                   )}
+                  <Row label="Council fees" value={formatRupees(summary.councilFees)} />
                 </div>
               </div>
               <div className="border-t border-neutral-200 pt-4 mt-auto flex justify-between items-center bg-neutral-50 -mx-5 -mb-5 p-5 rounded-b-lg">
@@ -303,16 +306,21 @@ export default function RegistryResults({
           </div>
         )}
 
+        <div className="mt-8">
+          <OfficeAddress />
+        </div>
+
         {/* FY disclaimer */}
-        <div className="mt-12 pt-6 border-t border-neutral-200 text-center text-xs text-neutral-400 leading-relaxed max-w-xl mx-auto italic">
+        <div className="mt-5 pt-5 border-t border-neutral-200 text-center text-xs text-neutral-400 leading-relaxed max-w-xl mx-auto italic">
           Disclaimer: This calculation is for informational purposes only for the Financial Year 2026
-          - 2027. Chaudary Property Advisor assumes no responsibility for any discrepancies or changes
+          - 2027. Chaudhary Law Associates assumes no responsibility for any discrepancies or changes
           in government tax rates.
         </div>
       </div>
 
       {/* Action buttons */}
-      <div className="controls-wrapper flex flex-col sm:flex-row gap-4 justify-center items-center mt-8 no-print">
+      <div className="controls-wrapper flex flex-wrap flex-col sm:flex-row gap-4 justify-center items-center mt-8 no-print">
+        <DownloadPdfButton filename="chaudhary-law-associates-registry-invoice" />
         <button
           className="btn btn-secondary px-6 py-3.5 rounded-lg font-semibold text-sm cursor-pointer w-full sm:w-auto flex items-center justify-center gap-2"
           onClick={onGoHome}
@@ -337,7 +345,7 @@ export default function RegistryResults({
               d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
             />
           </svg>
-          Print / Save PDF
+          Print Invoice
         </button>
         <button
           className="btn btn-primary px-8 py-3.5 rounded-lg font-semibold text-sm cursor-pointer w-full sm:w-auto flex items-center justify-center gap-2"

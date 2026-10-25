@@ -10,7 +10,7 @@ export default function Header({ active = "none" }: { active?: ActiveCalc }) {
           href="/"
           className="font-extrabold text-sm sm:text-lg tracking-tight text-neutral-900 hover:opacity-90 flex items-center gap-2.5"
         >
-          <span className="header-title-text">CHAUDARY PROPERTY ADVISOR</span>
+          <span className="header-title-text">Chaudhary Law Associates</span>
         </Link>
 
         {active !== "none" && (

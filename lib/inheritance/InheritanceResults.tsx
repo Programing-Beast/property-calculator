@@ -1,6 +1,8 @@
 "use client";
 
 import { Fragment, useMemo, useState } from "react";
+import DownloadPdfButton from "@/components/DownloadPdfButton";
+import OfficeAddress from "@/components/OfficeAddress";
 import { Fraction } from "./fraction";
 import {
   calculateInheritance,
@@ -60,13 +62,13 @@ export default function InheritanceResults({
 
   return (
     <div id="results-screen">
-      <div className="print-invoice-box bg-white border border-neutral-200 rounded-3xl shadow-sm p-6 sm:p-10 text-left flex flex-col min-h-[500px] md:min-h-[600px]">
+      <div className="invoice-document print-invoice-box bg-white border border-neutral-200 rounded-3xl shadow-sm p-6 sm:p-10 text-left flex flex-col min-h-[500px] md:min-h-[600px]">
         {/* Report header */}
-        <div className="print-header flex flex-row justify-between items-center border-b-2 border-neutral-200 pb-6 mb-8 gap-4">
+        <div className="invoice-heading print-header flex flex-col sm:flex-row justify-between items-center border-b-2 border-neutral-200 pb-6 mb-8 gap-4">
           <div className="flex items-center gap-3">
             <div>
               <h1 className="text-xl sm:text-2xl font-black text-neutral-900 tracking-tight leading-none">
-                CHAUDARY PROPERTY ADVISOR
+                Chaudhary Law Associates
               </h1>
               <p className="text-xs text-neutral-500 mt-1 uppercase font-bold tracking-wider">
                 Inheritance Calculator (Fiqh Hanafi &amp; MFLO 1961)
@@ -184,6 +186,9 @@ export default function InheritanceResults({
 
         {/* Disclaimer */}
         <div className="w-full mt-auto pt-6 border-t border-neutral-200">
+          <div className="mb-4">
+            <OfficeAddress />
+          </div>
           <p className="text-[10px] text-neutral-400 w-full leading-normal text-left">
             Disclaimer: This calculation is performed in accordance with Fiqh Hanafi (Ahl-e-Sunnat)
             and Muslim Family Laws Ordinance (MFLO) 1961. This information is for educational purposes
@@ -194,6 +199,7 @@ export default function InheritanceResults({
 
       {/* Actions */}
       <div className="no-print flex flex-wrap justify-center items-center gap-4 mt-10">
+        <DownloadPdfButton filename="chaudhary-law-associates-inheritance-report" />
         <button
           className="btn btn-secondary px-6 py-3 rounded-lg font-bold text-sm cursor-pointer shadow-sm"
           onClick={onBack}
@@ -211,7 +217,7 @@ export default function InheritanceResults({
               d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
             />
           </svg>
-          <span>Print / Save PDF</span>
+          <span>Print Invoice</span>
         </button>
         <button
           className="btn btn-secondary px-6 py-3 rounded-lg font-bold text-sm cursor-pointer flex items-center justify-center gap-2 shadow-sm"

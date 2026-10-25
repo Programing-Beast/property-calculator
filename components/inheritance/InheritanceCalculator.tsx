@@ -23,7 +23,7 @@ export default function InheritanceCalculator() {
       <main className="flex-grow flex flex-col items-center justify-center py-16 sm:py-24 px-4">
         <div className="w-full max-w-2xl text-center">
           <span className="text-xs font-bold text-brand-orange tracking-widest uppercase mb-3 block">
-            Chaudary Property Advisor
+            Chaudhary Law Associates
           </span>
           <h1 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight mb-5 leading-tight">
             Inheritance Calculator
@@ -70,7 +70,7 @@ export default function InheritanceCalculator() {
     return (
       <main className="flex-grow w-full max-w-3xl mx-auto px-4 py-10 sm:py-16 text-center">
         <span className="text-xs font-bold text-brand-orange tracking-widest uppercase mb-2 block">
-          Chaudary Property Advisor
+          Chaudhary Law Associates
         </span>
         <h1 className="text-2xl sm:text-3xl font-black text-neutral-900 tracking-tight mb-2">
           Review Details

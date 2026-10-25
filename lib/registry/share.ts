@@ -22,7 +22,7 @@ export function buildRegistryShareText(result: RegistryResult): string {
     "FBR Withholding Taxes are exempt for Tamleek Transfers, provided eligibility conditions are met.";
 
   if (isTamleek || (isPoa && inputs.giftType === "heir")) {
-    return `CHAUDARY PROPERTY ADVISOR — Registry Expenses Calculator Invoice
+    return `Chaudhary Law Associates — Registry Expenses Calculator Invoice
 --------------------------------------------------------------
 Transaction : ${transLabel}
 --------------------------------------------------------------
@@ -40,12 +40,12 @@ Calculate yours instantly at: ${shareUrl}
 `;
   }
 
-  return `CHAUDARY PROPERTY ADVISOR — Registry Expenses Calculator Invoice
+  return `Chaudhary Law Associates — Registry Expenses Calculator Invoice
 --------------------------------------------------------------
 Transaction : ${transLabel}
 Property Type    : ${propLabel}
 Total Valuation  : ${formatRupees(summary.totalValue)}
---------------------------------------------------------------
+${inputs.transactionType === "sale" ? `Miscellaneous Charges : ${formatRupees(summary.miscCharges)}\nCouncil fees : ${formatRupees(summary.councilFees)}\n` : ""}--------------------------------------------------------------
 ${buyerLabel}  : ${formatRupees(summary.buyerTotal)}
 ${sellerLabel} : ${formatRupees(summary.sellerTotal)}
 --------------------------------------------------------------

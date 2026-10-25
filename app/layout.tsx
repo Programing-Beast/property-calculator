@@ -17,7 +17,7 @@ const openSans = Open_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Chaudary Property Advisor | Calculators",
+  title: "Chaudhary Law Associates | Calculators",
   description:
     "Property registry expenses and Islamic inheritance calculators for Pakistan. Safe, private, and offline-ready.",
 };

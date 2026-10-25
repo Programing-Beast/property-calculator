@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import InheritanceCalculator from "@/components/inheritance/InheritanceCalculator";
 
 export const metadata: Metadata = {
-  title: "Chaudary Property Advisor | Inheritance Calculator",
+  title: "Chaudhary Law Associates | Inheritance Calculator",
   description:
     "Calculate legal inheritance shares under Fiqh Hanafi and the Muslim Family Laws Ordinance 1961 (MFLO Section 4).",
 };

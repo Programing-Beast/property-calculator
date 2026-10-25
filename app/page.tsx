@@ -70,7 +70,7 @@ export default function Home() {
       <main className="flex-grow flex flex-col justify-center items-center py-10 sm:py-16 px-4">
         <div className="w-full max-w-5xl text-center mb-10 sm:mb-14">
           <span className="text-xs font-bold text-brand-orange tracking-widest uppercase mb-2 block">
-            Chaudary Property Advisor
+            Chaudhary Law Associates
           </span>
           <h1 className="text-3xl sm:text-5xl font-black text-neutral-900 tracking-tight mb-4">
             Property Calculators

@@ -8,7 +8,8 @@ export const TAX_CONFIG = {
   PLRA_MINIMUM: 3600,
   REGISTRATION_BELOW_500K: 500,
   REGISTRATION_ABOVE_500K: 1000,
-  MISC_CHARGES: 800,
+  MISC_CHARGES: 5000,
+  COUNCIL_FEES: 15000,
   FBR_236K_FILER: 0.0125,
   FBR_236K_NON_FILER: 0.105,
   FBR_236C_FILER: 0.0275,
@@ -46,6 +47,7 @@ export type RegistrySummary = {
   baldiaTma: number;
   plra: number;
   miscCharges: number;
+  councilFees: number;
   buyerTaxRate: number;
   buyerTax: number;
   sellerTaxRate: number;
@@ -132,9 +134,11 @@ export function calculateRegistry(inputs: RegistryInputs): RegistryResult {
 
   // Misc Charges
   let miscCharges: number = config.MISC_CHARGES;
-  if (isTamleek) miscCharges = 800;
+  if (isGiftToHeir || transactionType === "gift") miscCharges = 800;
   else if (isPoaHeir) miscCharges = 500;
   else if (isPoaNonHeir) miscCharges = 1000;
+
+  const councilFees = transactionType === "sale" ? config.COUNCIL_FEES : 0;
 
   // Buyer/Donee Tax (Section 236K)
   let buyerTaxRate = 0;
@@ -160,7 +164,7 @@ export function calculateRegistry(inputs: RegistryInputs): RegistryResult {
     ? 5400
     : isPoaHeir
       ? 3025 + 3600 + 500
-      : stampDuty + registrationFee + baldiaTma + plra + miscCharges + buyerTax;
+      : stampDuty + registrationFee + baldiaTma + plra + miscCharges + buyerTax + councilFees;
 
   const sellerTotal = isTamleek ? 0 : isPoaHeir ? 0 : sellerTax + mapPenalty;
 
@@ -186,6 +190,7 @@ export function calculateRegistry(inputs: RegistryInputs): RegistryResult {
       baldiaTma,
       plra,
       miscCharges,
+      councilFees,
       buyerTaxRate,
       buyerTax,
       sellerTaxRate,

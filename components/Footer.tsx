@@ -1,3 +1,5 @@
+import OfficeAddress from "./OfficeAddress";
+
 export default function Footer({ showSocial = false }: { showSocial?: boolean }) {
   return (
     <footer className="no-print border-t border-neutral-100 bg-white py-10 mt-auto text-xs text-neutral-500">
@@ -7,7 +9,7 @@ export default function Footer({ showSocial = false }: { showSocial?: boolean })
           <div className="text-left flex flex-col items-start w-full md:w-auto">
             <div className="flex items-center gap-2 mb-1.5">
               <span className="font-black text-neutral-800 tracking-wider text-xs uppercase">
-                CHAUDARY PROPERTY ADVISOR
+                Chaudhary Law Associates
               </span>
             </div>
             <p className="text-[11px] text-neutral-500 leading-normal max-w-xs">
@@ -41,6 +43,8 @@ export default function Footer({ showSocial = false }: { showSocial?: boolean })
             )}
           </div>
 
+          <OfficeAddress />
+
           {/* Right: Privacy safeguard */}
           <div className="text-left md:text-right flex flex-col md:items-end w-full md:w-auto">
             <p className="font-black text-neutral-800 uppercase tracking-wider text-xs">
@@ -52,8 +56,16 @@ export default function Footer({ showSocial = false }: { showSocial?: boolean })
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-neutral-200/60 text-[10px] tracking-wide uppercase text-neutral-400 text-left">
-          &copy; 2026 CHAUDARY PROPERTY ADVISOR. All Rights Reserved.
+        <div className="mt-8 pt-8 border-t border-neutral-200/60 text-[10px] tracking-wide text-neutral-400 text-left">
+          Developed by{" "}
+          <a
+            href="https://techvorasoft.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-brand-orange hover:underline focus-visible:underline"
+          >
+            TechVoraSoft
+          </a>
         </div>
       </div>
     </footer>

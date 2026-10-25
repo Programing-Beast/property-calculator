@@ -141,7 +141,7 @@ export function buildInheritanceShareText(distribution: Heir[], vals: Inheritanc
   const hasProperty = totalMarlas > 0;
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
 
-  let txt = "CHAUDARY PROPERTY ADVISOR — Islamic Inheritance Distribution Report\n";
+  let txt = "Chaudhary Law Associates — Islamic Inheritance Distribution Report\n";
   txt += `Generated On: ${new Date().toLocaleDateString()}\n`;
   txt += "--------------------------------------------------\n";
   if (hasAmount) txt += `Amount: ${formatRupees(estate.amount)}\n`;
